@@ -1,65 +1,36 @@
-import Image from "next/image";
+import CardsHome from '@/components/Home/CardsHome';
+import Hero from '@/components/Home/Hero';
+import Footer from '@/components/Footer/Footer';
+import WorkflowVisualizer, { WorkflowStep } from '@/components/Home/WorkflowVisualizer';
+
+const HOME_FLOW: WorkflowStep[] = [
+    { id: 1, title: "Input recibido", description: "El usuario ha enviado una consulta sobre la documentación técnica.", status: 'completed', type: 'input' },
+    { id: 2, title: "Prompt enviado al LLM", description: "Se ha estructurado el contexto y enviado la petición al modelo GPT-4.", status: 'completed', type: 'prompt' },
+    { id: 3, title: "Respuesta del LLM", description: "El modelo sugiere buscar información específica en la base de conocimientos.", status: 'completed', type: 'response' },
+    { id: 4, title: "Decisión: usar tool \"search_docs\"", description: "Agente determina que requiere la herramienta 'search_docs' para continuar.", status: 'completed', type: 'decision' },
+    { id: 5, title: "Tool ejecutada", description: "Llamada a la función interna con parámetros: { query: 'API authentication' }.", status: 'current', type: 'tool' },
+    { id: 6, title: "Resultado recibido", description: "Esperando respuesta de la herramienta...", status: 'pending', type: 'result' },
+    { id: 7, title: "Decisión final", description: "Generando respuesta conclusiva basada en los datos obtenidos.", status: 'pending', type: 'final' },
+    { id: 8, title: "Fin", description: "Proceso finalizado correctamente.", status: 'pending', type: 'end' }
+]
 
 export default function Home() {
+
+  // render return
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="w-full flex flex-col justify-center items-center gap-32 pb-32">
+      <Hero />
+      <CardsHome />
+      
+      {/* Workflow Section */}
+      <section className="w-full max-w-7xl px-10">
+          <div className="mb-16 border-b border-border/10 pb-8 text-left">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground">
+                  Flujo del <span className="text-primary/80">Agente</span>
+              </h2>
+          </div>
+          <WorkflowVisualizer steps={HOME_FLOW} />
+      </section>
     </div>
-  );
+  )
 }
