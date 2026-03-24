@@ -60,14 +60,14 @@ export default function CardsHome() {
                             <div
                                 key={feature.id}
                                 className={cn(
-                                    'group flex flex-col items-center text-center p-8 rounded-2xl border border-border/5 transition-all duration-500',
-                                    'bg-secondary/3 backdrop-blur-sm hover:border-primary/20 hover:bg-primary/2 hover:-translate-y-2 hover:shadow-2xl'
+                                    'group flex flex-col items-center text-center p-8 rounded-2xl border border-border/25 transition-all duration-500',
+                                    'bg-card/40 backdrop-blur-md hover:border-primary/30 hover:bg-secondary/20 hover:-translate-y-2 hover:shadow-2xl'
                                 )}
                             >
-                                <div className='mb-6 p-3 rounded-xl bg-primary/5 text-primary/60 transition-all duration-500 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110'>
+                                <div className='mb-6 p-4 rounded-xl bg-primary/5 text-primary/60 transition-all duration-500 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110'>
                                     <Icon className='w-6 h-6 stroke-[1.5]' />
                                 </div>
-                                <h3 className='text-xl font-medium mb-3 tracking-tight text-foreground'>
+                                <h3 className='font-serif text-xl font-medium mb-3 tracking-tight text-foreground'>
                                     {feature.title}
                                 </h3>
                                 <p className='text-base font-medium text-muted-foreground/40 leading-relaxed max-w-sm transition-colors group-hover:text-muted-foreground/60'>

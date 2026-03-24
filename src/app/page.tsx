@@ -31,6 +31,8 @@ export default function Home() {
           </div>
           <WorkflowVisualizer steps={HOME_FLOW} />
       </section>
+
+      <Footer />
     </div>
   )
 }

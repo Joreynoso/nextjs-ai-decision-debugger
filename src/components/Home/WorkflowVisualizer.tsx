@@ -73,22 +73,22 @@ export default function WorkflowVisualizer({ steps, className }: WorkflowVisuali
                         {/* Content Card */}
                         <div className={cn(
                             "mb-12 flex-1 rounded-2xl border p-6 transition-all duration-500",
-                            "bg-secondary/5 border-border/5 backdrop-blur-sm",
-                            step.status === 'current' && "border-primary/20 bg-primary/2 -translate-y-1 shadow-xl",
-                            step.status === 'completed' && "hover:border-primary/10 hover:bg-primary/1"
+                            "bg-card/40 border-border/25 backdrop-blur-md",
+                            step.status === 'current' && "border-primary/40 bg-primary/5 -translate-y-1 shadow-2xl",
+                            step.status === 'completed' && "hover:border-primary/30 hover:bg-secondary/20"
                         )}>
-                            <div className="flex items-center justify-between mb-2">
+                            <div className="flex items-center justify-between mb-3">
                                 <h4 className={cn(
-                                    "text-lg font-medium tracking-tight",
-                                    step.status === 'pending' ? "text-muted-foreground/40" : "text-foreground"
+                                    "font-serif text-xl font-medium tracking-tight",
+                                    step.status === 'pending' ? "text-muted-foreground/30" : "text-foreground"
                                 )}>
                                     {step.title}
                                 </h4>
                                 <span className={cn(
-                                    "text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md",
+                                    "text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md",
                                     step.status === 'completed' ? "bg-primary/10 text-primary" :
-                                    step.status === 'current' ? "bg-primary bg-opacity-20 text-primary animate-pulse" :
-                                    "bg-muted text-muted-foreground/40"
+                                    step.status === 'current' ? "bg-primary text-primary-foreground animate-pulse" :
+                                    "bg-muted text-muted-foreground/30"
                                 )}>
                                     {step.status === 'completed' ? 'Completado' :
                                      step.status === 'current' ? 'Actual' :
@@ -98,8 +98,10 @@ export default function WorkflowVisualizer({ steps, className }: WorkflowVisuali
                             
                             {step.description && (
                                 <p className={cn(
-                                    "text-sm font-medium leading-relaxed",
-                                    step.status === 'pending' ? "text-muted-foreground/20" : "text-muted-foreground/60"
+                                    "text-base font-medium leading-relaxed max-w-2xl transition-colors",
+                                    step.status === 'pending' ? "text-muted-foreground/20" : 
+                                    step.status === 'current' ? "text-muted-foreground/80" :
+                                    "text-muted-foreground/40 group-hover:text-muted-foreground/60"
                                 )}>
                                     {step.description}
                                 </p>

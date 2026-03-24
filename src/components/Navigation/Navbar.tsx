@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,28 +37,29 @@ export default function Navbar() {
       </button>
 
       {/* Mobile Menu Overlay */}
-      <div className={`
-        fixed inset-0 bg-background/95 backdrop-blur-xl z-40 transition-all duration-300 md:hidden
-        ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}
-      `}>
-        <div className="flex flex-col items-start justify-center h-full px-10 gap-8">
+      <div className={cn(
+        "fixed inset-x-0 top-[72px] bottom-0 z-40 transition-all duration-300 md:hidden",
+        "bg-background/80 backdrop-blur-xl border-t border-border/10",
+        isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+      )}>
+        <div className="flex flex-col items-center justify-center h-full px-10 gap-10 pb-20 text-center">
           <Link 
             href="/" 
-            className="text-4xl font-medium text-foreground"
+            className="font-serif text-5xl font-medium text-foreground hover:text-primary transition-colors"
             onClick={() => setIsOpen(false)}
           >
             Inicio
           </Link>
           <Link 
             href="/about" 
-            className="text-4xl font-medium text-foreground"
+            className="font-serif text-5xl font-medium text-foreground hover:text-primary transition-colors"
             onClick={() => setIsOpen(false)}
           >
             Nosotros
           </Link>
           <Link 
             href="/debugger" 
-            className="text-4xl font-medium text-foreground"
+            className="font-serif text-5xl font-medium text-foreground hover:text-primary transition-colors"
             onClick={() => setIsOpen(false)}
           >
             Depurador

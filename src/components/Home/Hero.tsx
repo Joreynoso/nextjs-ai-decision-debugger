@@ -1,11 +1,21 @@
 import { ArrowRight, Sparkles } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 export default function Hero() {
   return (
     <div className="relative flex min-h-dvh w-full items-end justify-start overflow-hidden px-10 pb-20 bg-transparent">
+
+      {/* Hero Background Image - Right-aligned, fully opaque */}
+      <div className="absolute top-0 right-0 w-full h-full -z-20 pointer-events-none overflow-hidden">
+        <div className="relative w-full h-full">
+          <img 
+            src="/background.png" 
+            alt="Hero Background" 
+            className="w-full h-full object-contain object-right"
+          />
+        </div>
+      </div>
 
       {/* Subtle Grid */}
       <div
