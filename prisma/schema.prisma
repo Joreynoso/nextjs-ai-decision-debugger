@@ -10,6 +10,8 @@ model Run {
   id        String   @id @default(uuid())
   input     String
   createdAt DateTime @default(now())
+
+  events    Event[]
 }
 
 model Event {
@@ -18,4 +20,6 @@ model Event {
   type      String
   data      Json
   createdAt DateTime @default(now())
+
+  run       Run       @relation(fields: [runId], references: [id], onDelete: Cascade)
 }
