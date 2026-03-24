@@ -1,7 +1,7 @@
 'use client'
 
 import TechCard from '@/components/About/TechCard'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 
 // ── SVG icons ────────────────────────────────────────────────
 const NextjsIcon = () => (
@@ -139,7 +139,7 @@ const techStack = [
 ]
 
 // ── Animation variants ────────────────────────────────────────
-const containerVariants = {
+const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -149,14 +149,14 @@ const containerVariants = {
     }
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
     hidden: { opacity: 0, y: 10 },
     visible: {
         opacity: 1,
         y: 0,
         transition: {
             duration: 0.4,
-            ease: [0.25, 0.1, 0.25, 1]
+            ease: [0.25, 0.1, 0.25, 1] as const
         }
     }
 }
@@ -169,7 +169,7 @@ export default function AboutPage() {
     return (
         <div className="min-h-screen flex flex-col items-center pt-40 pb-32 px-10">
             <div className="w-full max-w-7xl">
-                
+
                 {/* Header section — matches Debugger/Workflow style */}
                 <header className="mb-20 text-left border-b border-border/10 pb-12">
                     <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-foreground mb-6">
@@ -181,7 +181,7 @@ export default function AboutPage() {
                 </header>
 
                 {/* Animated tech grid */}
-                <motion.div 
+                <motion.div
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
                     variants={containerVariants}
                     initial="hidden"
