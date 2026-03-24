@@ -12,6 +12,7 @@ import {
     LucideIcon
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 
 export type WorkflowStep = {
     id: number;
@@ -39,7 +40,14 @@ interface WorkflowVisualizerProps {
 
 export default function WorkflowVisualizer({ steps, className }: WorkflowVisualizerProps) {
     return (
-        <div className={cn("flex flex-col gap-0", className)}>
+        <motion.div 
+            className={cn("flex flex-col gap-0", className)}
+            // Scroll animation: group fade-in
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+        >
             {steps.map((step, index) => {
                 const Icon = TYPE_TO_ICON[step.type] || MessageSquare
                 const isLast = index === steps.length - 1
@@ -66,7 +74,7 @@ export default function WorkflowVisualizer({ steps, className }: WorkflowVisuali
                                 <div className={cn(
                                     "w-px grow transition-colors duration-500",
                                     step.status === 'completed' ? "bg-primary/50" : "bg-border/20"
-                                )} />
+                                 )} />
                             )}
                         </div>
 
@@ -110,6 +118,6 @@ export default function WorkflowVisualizer({ steps, className }: WorkflowVisuali
                     </div>
                 )
             })}
-        </div>
+        </motion.div>
     )
 }

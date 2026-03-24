@@ -1,5 +1,8 @@
+"use client"
+
 import { Brain, Zap, Activity, Search, Clock, AlertTriangle } from 'lucide-react'
 import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 
 
 export const features = [
@@ -44,7 +47,14 @@ export const features = [
 export default function CardsHome() {
     return (
         <div className='w-full flex flex-col items-center px-10'>
-            <div className='w-full max-w-7xl'>
+            <motion.div 
+                className='w-full max-w-7xl'
+                // Scroll animation: group fade-in
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
                 
                 {/* Section Title - Centered */}
                 <div className="mb-16 border-b border-border/10 pb-8 text-center">
@@ -77,7 +87,7 @@ export default function CardsHome() {
                         )
                     })}
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }

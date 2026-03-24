@@ -1,6 +1,9 @@
+"use client"
+
 import { ArrowRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 export default function Hero() {
   return (
@@ -27,7 +30,14 @@ export default function Hero() {
         }}
       />
 
-      <div className="max-w-7xl w-full text-left">
+      <motion.div 
+        className="max-w-7xl w-full text-left"
+        // Scroll animation: group fade-in
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
 
         {/* Heading - Imposing but Balanced */}
         <h1 className="font-sans text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl tracking-tighter leading-[0.95] text-balance text-foreground font-medium">
@@ -55,7 +65,7 @@ export default function Hero() {
           </Link>
         </div>
 
-      </div>
+      </motion.div>
     </div>
   )
 }
