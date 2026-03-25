@@ -1,6 +1,5 @@
 import CardsHome from '@/components/Home/CardsHome';
 import Hero from '@/components/Home/Hero';
-import Footer from '@/components/Footer/Footer';
 import WorkflowVisualizer, { WorkflowStep } from '@/components/Home/WorkflowVisualizer';
 
 const HOME_FLOW: WorkflowStep[] = [
@@ -32,7 +31,6 @@ export default function Home() {
           <WorkflowVisualizer steps={HOME_FLOW} />
       </section>
 
-      <Footer />
     </div>
   )
 }

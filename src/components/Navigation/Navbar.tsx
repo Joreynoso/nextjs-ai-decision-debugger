@@ -19,8 +19,8 @@ export default function Navbar() {
         <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
           Inicio
         </Link>
-        <Link href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-          Nosotros
+        <Link href="/stack" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          Stack
         </Link>
         <Link href="/debugger" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
           Depurador
@@ -51,11 +51,11 @@ export default function Navbar() {
             Inicio
           </Link>
           <Link 
-            href="/about" 
+            href="/stack" 
             className="font-serif text-5xl font-medium text-foreground hover:text-primary transition-colors"
             onClick={() => setIsOpen(false)}
           >
-            Nosotros
+            Stack
           </Link>
           <Link 
             href="/debugger" 

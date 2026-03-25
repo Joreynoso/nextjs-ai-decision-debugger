@@ -39,10 +39,10 @@ const Footer = () => {
                     <div className="flex flex-col items-start md:items-end gap-6">
                         <div className="flex items-center gap-8">
                             <Link 
-                                href="/about" 
+                                href="/stack" 
                                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                             >
-                                Nosotros
+                                Stack
                             </Link>
                             <Link 
                                 href="/debugger" 

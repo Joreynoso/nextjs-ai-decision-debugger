@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Newsreader } from "next/font/google";
 import Navbar from "@/components/Navigation/Navbar";
+import Footer from "@/components/Footer/Footer";
 import "./globals.css";
 import SizeScreenHelper from '@/components/Helpers/ScreenSizeHelper';
 
@@ -47,6 +48,8 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
           <main className="grow">
             {children}
           </main>
+
+          <Footer />
 
           {/* helper size screen tailwind */}
           <SizeScreenHelper />
