@@ -12,7 +12,7 @@ import {
     LucideIcon
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
+import { EasingFunction, motion } from "framer-motion"
 
 export type WorkflowStep = {
     id: number;
@@ -55,7 +55,7 @@ const itemVariants = {
         opacity: 1,
         transition: {
             duration: 1.2,
-            ease: [0.22, 1, 0.36, 1] as any
+            ease: [0.22, 1, 0.36, 1] as unknown as EasingFunction
         }
     }
 }

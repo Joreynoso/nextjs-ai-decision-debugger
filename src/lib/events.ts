@@ -1,10 +1,11 @@
 import prisma from "@/lib/prisma"
 import { Event } from "@/types/types"
+import { Prisma } from "@prisma/client"
 
 export async function createEvent(
     runId: string, 
     type: string, 
-    data: any, 
+    data: Prisma.InputJsonValue, 
     userId: string | null = null
 ): Promise<Event> {
     try {

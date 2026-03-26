@@ -1,7 +1,7 @@
 'use client'
 
 import TechCard from '@/components/About/TechCard'
-import { motion, Variants } from 'framer-motion'
+import { EasingFunction, motion, Variants } from 'framer-motion'
 
 // ── SVG icons ────────────────────────────────────────────────
 const NextjsIcon = () => (
@@ -150,13 +150,14 @@ const containerVariants: Variants = {
     }
 }
 
-const itemVariants: Variants = {
+
+const itemVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
         transition: {
             duration: 1.2,
-            ease: [0.22, 1, 0.36, 1] as any
+            ease: [0.22, 1, 0.36, 1] as unknown as EasingFunction
         }
     }
 }
