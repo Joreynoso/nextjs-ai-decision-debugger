@@ -15,7 +15,7 @@ export default function Hero() {
           <img 
             src="/background.png" 
             alt="Hero Background" 
-            className="w-full h-full object-contain object-right"
+            className="w-full h-full object-contain object-right opacity-30 sm:opacity-100 transition-opacity duration-1000"
           />
         </div>
       </div>
@@ -33,10 +33,14 @@ export default function Hero() {
       <motion.div 
         className="max-w-7xl w-full text-left"
         // Scroll animation: group fade-in
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ 
+            duration: 1.5, 
+            ease: [0.22, 1, 0.36, 1],
+            delay: 0.2
+        }}
       >
 
         {/* Heading - Imposing but Balanced */}

@@ -144,19 +144,19 @@ const containerVariants: Variants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.05
+            staggerChildren: 0.15,
+            delayChildren: 0.1
         }
     }
 }
 
 const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        y: 0,
         transition: {
-            duration: 0.4,
-            ease: [0.25, 0.1, 0.25, 1] as const
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1] as any
         }
     }
 }
@@ -176,7 +176,7 @@ export default function AboutPage() {
                         Stack <span className="text-primary/80">Tecnológico</span>
                     </h1>
                     <p className="max-w-2xl text-xl font-medium text-muted-foreground/60 leading-relaxed">
-                        Las tecnologías y herramientas modernas que dan vida a este gestor de proyectos, diseñadas para máxima observabilidad y rendimiento.
+                        Las tecnologías y herramientas modernas que dan vida a este gestor de proyectos, diseñadas para máxima observabilidad and rendimiento.
                     </p>
                 </header>
 
@@ -189,7 +189,7 @@ export default function AboutPage() {
                     viewport={{ once: true, amount: 0.1 }}
                 >
                     {techStack.map((tech) => (
-                        <motion.div key={tech.name} variants={itemVariants}>
+                        <motion.div key={tech.name} variants={itemVariants} className="h-full">
                             <TechCard
                                 name={tech.name}
                                 description={tech.description}

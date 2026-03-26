@@ -38,22 +38,47 @@ interface WorkflowVisualizerProps {
     className?: string;
 }
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2,
+            delayChildren: 0.1
+        }
+    }
+}
+
+const itemVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1] as any
+        }
+    }
+}
+
 export default function WorkflowVisualizer({ steps, className }: WorkflowVisualizerProps) {
     return (
         <motion.div 
             className={cn("flex flex-col gap-0", className)}
-            // Scroll animation: group fade-in
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.05 }}
         >
             {steps.map((step, index) => {
                 const Icon = TYPE_TO_ICON[step.type] || MessageSquare
                 const isLast = index === steps.length - 1
                 
                 return (
-                    <div key={step.id} className="group relative flex gap-8">
+                    <motion.div 
+                        key={step.id} 
+                        variants={itemVariants}
+                        className="group relative flex gap-8"
+                    >
                         {/* Timeline Line & Icon */}
                         <div className="flex flex-col items-center">
                             <div className={cn(
@@ -115,7 +140,7 @@ export default function WorkflowVisualizer({ steps, className }: WorkflowVisuali
                                 </p>
                             )}
                         </div>
-                    </div>
+                    </motion.div>
                 )
             })}
         </motion.div>

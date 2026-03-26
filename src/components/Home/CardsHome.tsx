@@ -44,31 +44,59 @@ export const features = [
     }
 ]
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.1
+        }
+    }
+}
+
+const itemVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1] as any
+        }
+    }
+}
+
 export default function CardsHome() {
     return (
         <div className='w-full flex flex-col items-center px-10'>
-            <motion.div 
-                className='w-full max-w-7xl'
-                // Scroll animation: group fade-in
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <div className='w-full max-w-7xl'>
                 
                 {/* Section Title - Centered */}
-                <div className="mb-16 border-b border-border/10 pb-8 text-center">
+                <motion.div 
+                    className="mb-16 border-b border-border/10 pb-8 text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                >
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground">
                         Capacidades <span className="text-primary/80">Principales</span>
                     </h2>
-                </div>
+                </motion.div>
 
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8'>
+                <motion.div 
+                    className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8'
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                >
                     {features.map((feature) => {
                         const Icon = feature.icon
                         return (
-                            <div
+                            <motion.div
                                 key={feature.id}
+                                variants={itemVariants}
                                 className={cn(
                                     'group flex flex-col items-center text-center p-8 rounded-2xl border border-border/25 transition-all duration-500',
                                     'bg-card/40 backdrop-blur-md hover:border-primary/30 hover:bg-secondary/20 hover:-translate-y-2 hover:shadow-2xl'
@@ -83,11 +111,11 @@ export default function CardsHome() {
                                 <p className='text-base font-medium text-muted-foreground/40 leading-relaxed max-w-sm transition-colors group-hover:text-muted-foreground/60'>
                                     {feature.description}
                                 </p>
-                            </div>
+                            </motion.div>
                         )
                     })}
-                </div>
-            </motion.div>
+                </motion.div>
+            </div>
         </div>
     )
 }
