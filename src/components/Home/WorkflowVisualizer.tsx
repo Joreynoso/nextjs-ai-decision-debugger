@@ -2,35 +2,32 @@
 
 import { 
     MessageSquare, 
-    Send, 
     Cpu, 
-    Search, 
     Terminal, 
     Database, 
-    CheckCircle, 
     Flag,
     LucideIcon
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { EasingFunction, motion } from "framer-motion"
+import { EventType } from "@/types/types"
 
+// 👇 ahora usa tus EventType reales
 export type WorkflowStep = {
     id: number;
     title: string;
     description?: string;
     status: 'completed' | 'current' | 'pending';
-    type: 'input' | 'prompt' | 'response' | 'decision' | 'tool' | 'result' | 'final' | 'end';
+    type: EventType;
 }
 
-const TYPE_TO_ICON: Record<string, LucideIcon> = {
-    input: MessageSquare,
-    prompt: Send,
-    response: Cpu,
-    decision: Search,
-    tool: Terminal,
-    result: Database,
-    final: CheckCircle,
-    end: Flag
+// 👇 lookup table actualizada
+const TYPE_TO_ICON: Record<EventType, LucideIcon> = {
+    input:     MessageSquare,
+    thinking:  Cpu,
+    tool_call: Terminal,
+    result:    Database,
+    error:     Flag,
 }
 
 interface WorkflowVisualizerProps {
@@ -99,7 +96,7 @@ export default function WorkflowVisualizer({ steps, className }: WorkflowVisuali
                                 <div className={cn(
                                     "w-px grow transition-colors duration-500",
                                     step.status === 'completed' ? "bg-primary/50" : "bg-border/20"
-                                 )} />
+                                )} />
                             )}
                         </div>
 
