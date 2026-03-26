@@ -6,13 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "migrate": "prisma migrate dev --config prisma.migrate.config.ts"
   },
   "type": "module",
   "dependencies": {
+    "@clerk/mcp-tools": "^0.3.1",
+    "@clerk/nextjs": "^7.0.7",
     "@modelcontextprotocol/sdk": "^1.28.0",
+    "@prisma/adapter-pg": "^7.5.0",
     "@prisma/client": "^7.5.0",
     "@prisma/config": "^7.5.0",
+    "@vercel/mcp-adapter": "^0.3.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.3.1",

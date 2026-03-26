@@ -1,10 +1,9 @@
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
 }
 
 datasource db {
   provider = "postgresql"
-  
 }
 
 model Run {
@@ -12,7 +11,8 @@ model Run {
   input     String
   createdAt DateTime @default(now())
 
-  events    Event[]
+  userId String // clerk user id
+  events Event[]
 }
 
 model Event {
@@ -22,5 +22,7 @@ model Event {
   data      Json
   createdAt DateTime @default(now())
 
-  run       Run       @relation(fields: [runId], references: [id], onDelete: Cascade)
+  userId String? // opcional por si se quiere usar sin clerk
+
+  run Run @relation(fields: [runId], references: [id], onDelete: Cascade)
 }
