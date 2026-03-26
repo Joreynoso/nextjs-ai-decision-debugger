@@ -67,7 +67,7 @@ export default function WorkflowVisualizer({ steps, className }: WorkflowVisuali
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.05 }}
+            viewport={{ once: true, amount: 0.1 }}
         >
             {steps.map((step, index) => {
                 const Icon = TYPE_TO_ICON[step.type] || MessageSquare
@@ -108,7 +108,7 @@ export default function WorkflowVisualizer({ steps, className }: WorkflowVisuali
                             "mb-12 flex-1 rounded-2xl border p-6 transition-all duration-500",
                             "bg-card/40 border-border/25 backdrop-blur-md",
                             step.status === 'current' && "border-primary/40 bg-primary/5 -translate-y-1 shadow-2xl",
-                            step.status === 'completed' && "hover:border-primary/30 hover:bg-secondary/20"
+                            step.status === 'completed' && "hover:border-primary/30 hover:bg-secondary/20 hover:-translate-y-2 hover:shadow-2xl"
                         )}>
                             <div className="flex items-center justify-between mb-3">
                                 <h4 className={cn(

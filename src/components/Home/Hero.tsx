@@ -11,13 +11,13 @@ export default function Hero() {
 
       {/* Hero Background Image - Right-aligned, fully opaque */}
       <div className="absolute top-0 right-0 w-full h-full -z-20 pointer-events-none overflow-hidden">
-        <div className="relative w-full h-full">
+        {/* <div className="relative w-full h-full">
           <img 
             src="/background.png" 
             alt="Hero Background" 
             className="w-full h-full object-contain object-right opacity-30 sm:opacity-100 transition-opacity duration-1000"
           />
-        </div>
+        </div> */}
       </div>
 
       {/* Subtle Grid */}
