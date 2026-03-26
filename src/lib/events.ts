@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma"
 import { Event } from "@/types/types"
-import { Prisma } from "@prisma/client"
+import { Prisma } from '@/generated/prisma/client'
 
 export async function createEvent(
     runId: string, 
